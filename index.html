@@ -15,9 +15,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   </head>
-  <body>
+  <body onload='initSeller()'>
     <script src='vehicle.js'></script>
     <script>
+    function initSeller(){
       vehiclesArray =new Array();
       firstVehicle = new Car('Audi',300,120,2006,3000,5,'diesel',5);
       secoundVehicle = new Motorbike('KTM',150,80,2003,5000,2,'diesel');
@@ -31,11 +32,14 @@
       vehiclesArray.push(newCar);
       seller = new Seller(vehiclesArray);
       seller.showArray();
+      seller.renderAll();
+      seller.countTypeOfVehicles();
       vehiclesArray2 =new Array();
       firstVehicle2 = new Car('VW',300,120,2006,3000,5,'diesel',5);
       vehiclesArray2.push(firstVehicle2);
       seller2 =new Seller(vehiclesArray2);
       seller2.showArray();
+    }
       //seller.renderOnPage();
     </script>
     <div class='container' id='vehicleList'>

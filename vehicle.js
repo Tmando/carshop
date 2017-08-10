@@ -18,6 +18,16 @@ var Vehicle = (function () {
         this.numberOfSeats = numberOfSeats;
         this.fuelType = fuelType;
     }
+    Vehicle.prototype.render = function () {
+        var writeOut = '<li>' + 'Producer ' + this.producer + '</li>';
+        writeOut += '<li>' + 'Weight ' + this.weight + '</li>';
+        writeOut += '<li>' + 'Speed ' + this.speed + '</li>';
+        writeOut += '<li>' + 'Year ' + this.year + '</li>';
+        writeOut += '<li>' + 'Kilometers Left ' + this.kilometersLeft + '</li>';
+        writeOut += '<li>' + 'Seats ' + this.numberOfSeats + '</li>';
+        writeOut += '<li>' + 'Fuel Type ' + this.fuelType + '</li>';
+        return writeOut;
+    };
     return Vehicle;
 }());
 var Car = (function (_super) {
@@ -27,6 +37,17 @@ var Car = (function (_super) {
         _this.doors = doors;
         return _this;
     }
+    Car.prototype.render = function () {
+        var writeOut = "<div class=\"row\">";
+        writeOut += "<div class=\"col-12\">";
+        writeOut += '<ul>';
+        writeOut += _super.prototype.render.call(this);
+        writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
+        writeOut += '</ul>';
+        writeOut += "</div>";
+        writeOut += "</div>";
+        return writeOut;
+    };
     return Car;
 }(Vehicle));
 var Motorbike = (function (_super) {
@@ -34,6 +55,16 @@ var Motorbike = (function (_super) {
     function Motorbike(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) {
         return _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) || this;
     }
+    Motorbike.prototype.render = function () {
+        var writeOut = "<div class=\"row\">";
+        writeOut += "<div class=\"col-12\">";
+        writeOut += '<ul>';
+        writeOut += _super.prototype.render.call(this);
+        writeOut += '</ul>';
+        writeOut += "</div>";
+        writeOut += "</div>";
+        return writeOut;
+    };
     return Motorbike;
 }(Vehicle));
 var Bus = (function (_super) {
@@ -43,6 +74,17 @@ var Bus = (function (_super) {
         _this.doors = doors;
         return _this;
     }
+    Bus.prototype.render = function () {
+        var writeOut = "<div class=\"row\">";
+        writeOut += "<div class=\"col-12\">";
+        writeOut += '<ul>';
+        writeOut += _super.prototype.render.call(this);
+        writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
+        writeOut += '</ul>';
+        writeOut += "</div>";
+        writeOut += "</div>";
+        return writeOut;
+    };
     return Bus;
 }(Vehicle));
 var Truck = (function (_super) {
@@ -52,14 +94,56 @@ var Truck = (function (_super) {
         _this.doors = doors;
         return _this;
     }
+    Truck.prototype.render = function () {
+        var writeOut = "<div class=\"row\">";
+        writeOut += "<div class=\"col-12\">";
+        writeOut += '<ul>';
+        writeOut += _super.prototype.render.call(this);
+        writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
+        writeOut += '</ul>';
+        writeOut += "</div>";
+        writeOut += "</div>";
+        return writeOut;
+    };
     return Truck;
 }(Vehicle));
 var Seller = (function () {
     function Seller(testArray) {
         this.vehiclesArray = testArray;
+        this.vehicleCounterMap = new Map();
     }
     Seller.prototype.showArray = function () {
         console.log(this.vehiclesArray);
+    };
+    Seller.prototype.renderAll = function () {
+        for (var i = 0; i < this.vehiclesArray.length; i++) {
+            document.getElementById('vehicleList').innerHTML += this.vehiclesArray[i].render();
+        }
+    };
+    Seller.prototype.countTypeOfVehicles = function () {
+        this.vehicleCounterMap.set('Cars', 0);
+        this.vehicleCounterMap.set('Motorbikes', 0);
+        this.vehicleCounterMap.set('Bus', 0);
+        this.vehicleCounterMap.set('Trucks', 0);
+        for (var i = 0; i < this.vehiclesArray.length; i++) {
+            if (this.vehiclesArray[i] instanceof Car) {
+                var val = this.vehicleCounterMap.get('Cars') + 1;
+                this.vehicleCounterMap.set('Cars', val);
+            }
+            if (this.vehiclesArray[i] instanceof Motorbike) {
+                var val = this.vehicleCounterMap.get('Motorbikes') + 1;
+                this.vehicleCounterMap.set('Motorbikes', val);
+            }
+            if (this.vehiclesArray[i] instanceof Bus) {
+                var val = this.vehicleCounterMap.get('Bus') + 1;
+                this.vehicleCounterMap.set('Bus', val);
+            }
+            if (this.vehiclesArray[i] instanceof Truck) {
+                var val = this.vehicleCounterMap.get('Trucks') + 1;
+                this.vehicleCounterMap.set('Trucks', val);
+            }
+        }
+        console.log(this.vehicleCounterMap);
     };
     return Seller;
 }());
