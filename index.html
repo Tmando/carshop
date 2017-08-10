@@ -13,23 +13,53 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Lato|Slabo+27px');
+  .row{
+    margin:3%;
+  }
+  .carStyle{
+    background-color: lightgrey;
+  }
+  .motorbikeStyle{
+    background-color: rgb(241,186,69);
+  }
+  .busStyle{
+    /*background-color: rgb(240,0,3);*/
 
+    background-color: rgb(36,186,187);
+  }
+  .truckStyle{
+    background-color: 	rgb(250,128,114);
+  }
+  ul,li{
+    font-family: 'Slabo 27px', serif;
+    list-style-type: none;
+    font-size: 15pt;
+  }
+  h1{
+    font-family: 'Lato', sans-serif;
+  }
+
+  </style>
   </head>
   <body onload='initSeller()'>
     <script src='vehicle.js'></script>
     <script>
     function initSeller(){
       vehiclesArray =new Array();
-      firstVehicle = new Car('Audi',300,120,2006,3000,5,'diesel',5);
-      secoundVehicle = new Motorbike('KTM',150,80,2003,5000,2,'diesel');
-      thirdVehicle = new Bus('Merceds',1500,100,1998,4000,50,'petrol',2);
-      fourthVehicle= new Truck('MAN',3000,130,2016,200000,3,'petrol',2);
-      newCar = new Car('BMW',300,120,2006,3000,5,'diesel',5);
+      firstVehicle = new Car('Audi',300,120,2006,3000,5,'diesel',5,'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/2012_Audi_A3_en_Mallorca_%287404068414%29.jpg/1280px-2012_Audi_A3_en_Mallorca_%287404068414%29.jpg');
+      secoundVehicle = new Motorbike('KTM',150,80,2003,5000,2,'diesel','https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Yamaha_Fazer_1000-EXUP.JPG/800px-Yamaha_Fazer_1000-EXUP.JPG');
+      thirdVehicle = new Bus('Mercedes',1500,100,1998,4000,50,'petrol',2,'https://upload.wikimedia.org/wikipedia/commons/f/f9/%E6%B7%B1%E5%9C%B3%E5%85%AC%E4%BA%A4M375%E8%B7%AFK9.jpg');
+      fourthVehicle= new Truck('MAN',3000,130,2016,200000,3,'petrol',2,'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/MAN%2C_Dick_Vijn_Logistiek_bv%2C_Zwaafdijk.JPG/800px-MAN%2C_Dick_Vijn_Logistiek_bv%2C_Zwaafdijk.JPG');
+      newCar = new Car('BMW',300,120,2006,3000,5,'diesel',5,'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/2015-bmw-x6.jpg/1024px-2015-bmw-x6.jpg');
+      firstVehicle2 = new Car('VW',300,120,2006,3000,5,'diesel',5,'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/2006-2007_Volkswagen_New_Beetle.jpg/1024px-2006-2007_Volkswagen_New_Beetle.jpg');
       vehiclesArray.push(firstVehicle);
       vehiclesArray.push(secoundVehicle);
       vehiclesArray.push(thirdVehicle);
       vehiclesArray.push(fourthVehicle);
       vehiclesArray.push(newCar);
+      vehiclesArray.push(firstVehicle2);
       seller = new Seller(vehiclesArray);
       seller.showArray();
       seller.renderAll();
@@ -42,7 +72,7 @@
     }
       //seller.renderOnPage();
     </script>
-    <div class='container' id='vehicleList'>
+    <div class='container-fluid' id='vehicleList'>
 
     </div>
 

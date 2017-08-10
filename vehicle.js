@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Vehicle = (function () {
-    function Vehicle(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) {
+    function Vehicle(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, imgSrc) {
         this.producer = producer;
         this.weight = weight;
         this.speed = speed;
@@ -17,6 +17,7 @@ var Vehicle = (function () {
         this.kilometersLeft = kilometersLeft;
         this.numberOfSeats = numberOfSeats;
         this.fuelType = fuelType;
+        this.imgSrc = imgSrc;
     }
     Vehicle.prototype.render = function () {
         var writeOut = '<li>' + 'Producer ' + this.producer + '</li>';
@@ -28,18 +29,28 @@ var Vehicle = (function () {
         writeOut += '<li>' + 'Fuel Type ' + this.fuelType + '</li>';
         return writeOut;
     };
+    Vehicle.prototype.getImgSrc = function () {
+        return this.imgSrc;
+    };
+    Vehicle.prototype.getProducer = function () {
+        return this.producer;
+    };
     return Vehicle;
 }());
 var Car = (function (_super) {
     __extends(Car, _super);
-    function Car(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, doors) {
-        var _this = _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) || this;
+    function Car(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, doors, imgSrc) {
+        var _this = _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, imgSrc) || this;
         _this.doors = doors;
         return _this;
     }
     Car.prototype.render = function () {
-        var writeOut = "<div class=\"row\">";
-        writeOut += "<div class=\"col-12\">";
+        var writeOut = "<div class=\"row carStyle\">";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += "<img class='img-responsive' src=\"" + _super.prototype.getImgSrc.call(this) + "\">";
+        writeOut += "</div>";
+        writeOut += "<div class=\"col-lg-6 carStyle\">";
+        writeOut += '<h1>' + _super.prototype.getProducer.call(this) + '</h1>';
         writeOut += '<ul>';
         writeOut += _super.prototype.render.call(this);
         writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
@@ -52,12 +63,16 @@ var Car = (function (_super) {
 }(Vehicle));
 var Motorbike = (function (_super) {
     __extends(Motorbike, _super);
-    function Motorbike(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) {
-        return _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) || this;
+    function Motorbike(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, imgSrc) {
+        return _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, imgSrc) || this;
     }
     Motorbike.prototype.render = function () {
-        var writeOut = "<div class=\"row\">";
-        writeOut += "<div class=\"col-12\">";
+        var writeOut = "<div class=\"row motorbikeStyle\">";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += "<img class='img-responsive' src=\"" + _super.prototype.getImgSrc.call(this) + "\">";
+        writeOut += "</div>";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += '<h1>' + _super.prototype.getProducer.call(this) + '</h1>';
         writeOut += '<ul>';
         writeOut += _super.prototype.render.call(this);
         writeOut += '</ul>';
@@ -69,14 +84,18 @@ var Motorbike = (function (_super) {
 }(Vehicle));
 var Bus = (function (_super) {
     __extends(Bus, _super);
-    function Bus(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, doors) {
-        var _this = _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) || this;
+    function Bus(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, doors, imgSrc) {
+        var _this = _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, imgSrc) || this;
         _this.doors = doors;
         return _this;
     }
     Bus.prototype.render = function () {
-        var writeOut = "<div class=\"row\">";
-        writeOut += "<div class=\"col-12\">";
+        var writeOut = "<div class=\"row busStyle\">";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += "<img class='img-responsive' src=\"" + _super.prototype.getImgSrc.call(this) + "\">";
+        writeOut += "</div>";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += '<h1>' + _super.prototype.getProducer.call(this) + '</h1>';
         writeOut += '<ul>';
         writeOut += _super.prototype.render.call(this);
         writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
@@ -89,14 +108,18 @@ var Bus = (function (_super) {
 }(Vehicle));
 var Truck = (function (_super) {
     __extends(Truck, _super);
-    function Truck(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, doors) {
-        var _this = _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType) || this;
+    function Truck(producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, doors, imgSrc) {
+        var _this = _super.call(this, producer, weight, speed, year, kilometersLeft, numberOfSeats, fuelType, imgSrc) || this;
         _this.doors = doors;
         return _this;
     }
     Truck.prototype.render = function () {
-        var writeOut = "<div class=\"row\">";
-        writeOut += "<div class=\"col-12\">";
+        var writeOut = "<div class=\"row truckStyle\">";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += "<img class='img-responsive' src=\"" + _super.prototype.getImgSrc.call(this) + "\">";
+        writeOut += "</div>";
+        writeOut += "<div class=\"col-lg-6\">";
+        writeOut += '<h1>' + _super.prototype.getProducer.call(this) + '</h1>';
         writeOut += '<ul>';
         writeOut += _super.prototype.render.call(this);
         writeOut += '<li>' + 'Doors ' + this.doors + '</li>';

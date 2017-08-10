@@ -6,7 +6,8 @@ abstract class Vehicle {
   kilometersLeft:number;
   numberOfSeats:number;
   fuelType:string;
-  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string){
+  imgSrc:string;
+  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,imgSrc:string){
     this.producer = producer;
     this.weight = weight;
     this.speed = speed;
@@ -14,6 +15,8 @@ abstract class Vehicle {
     this.kilometersLeft = kilometersLeft;
     this.numberOfSeats = numberOfSeats;
     this.fuelType = fuelType;
+    this.imgSrc = imgSrc;
+
 
   }
   render():string{
@@ -27,19 +30,29 @@ abstract class Vehicle {
           writeOut += '<li>' + 'Fuel Type ' + this.fuelType + '</li>';
     return writeOut;
   }
+  getImgSrc():string{
+    return this.imgSrc;
+  }
+  getProducer():string{
+    return this.producer;
+  }
   }
 
 
 
 class Car extends Vehicle{
   doors:number;
-  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,doors:number){
-    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType);
+  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,doors:number,imgSrc:string){
+    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType,imgSrc);
     this.doors = doors;
   }
   render():string{
-    let writeOut:string = "<div class=\"row\">";
-      writeOut += "<div class=\"col-12\">";
+    let writeOut:string = "<div class=\"row carStyle\">";
+    writeOut += "<div class=\"col-lg-6\">";
+    writeOut +="<img class='img-responsive' src=\""+  super.getImgSrc() +"\">";
+    writeOut += "</div>";
+      writeOut += "<div class=\"col-lg-6 carStyle\">";
+        writeOut += '<h1>' + super.getProducer() + '</h1>';
         writeOut += '<ul>';
         writeOut += super.render();
         writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
@@ -55,12 +68,16 @@ class Car extends Vehicle{
 }
 
 class Motorbike extends Vehicle{
-  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string){
-    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType);
+  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,imgSrc:string){
+    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType,imgSrc);
   }
   render():string{
-    let writeOut:string = "<div class=\"row\">";
-      writeOut += "<div class=\"col-12\">";
+    let writeOut:string = "<div class=\"row motorbikeStyle\">";
+    writeOut += "<div class=\"col-lg-6\">";
+    writeOut +="<img class='img-responsive' src=\""+  super.getImgSrc() +"\">";
+    writeOut += "</div>";
+      writeOut += "<div class=\"col-lg-6\">";
+        writeOut += '<h1>' + super.getProducer() + '</h1>';
         writeOut += '<ul>';
         writeOut += super.render();
         writeOut += '</ul>';
@@ -75,13 +92,17 @@ class Motorbike extends Vehicle{
 
 class Bus extends Vehicle{
   doors:number;
-  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,doors:number){
-    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType);
+  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,doors:number,imgSrc:string){
+    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType,imgSrc);
     this.doors = doors;
   }
   render():string{
-    let writeOut:string = "<div class=\"row\">";
-      writeOut += "<div class=\"col-12\">";
+    let writeOut:string = "<div class=\"row busStyle\">";
+    writeOut += "<div class=\"col-lg-6\">";
+    writeOut +="<img class='img-responsive' src=\""+  super.getImgSrc() +"\">";
+    writeOut += "</div>";
+      writeOut += "<div class=\"col-lg-6\">";
+        writeOut += '<h1>' + super.getProducer() + '</h1>';
         writeOut += '<ul>';
         writeOut += super.render();
         writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
@@ -95,13 +116,17 @@ class Bus extends Vehicle{
 
 class Truck extends Vehicle{
   doors:number;
-  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,doors:number){
-    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType);
+  constructor(producer:string,weight:number,speed:number,year:number,kilometersLeft:number,numberOfSeats:number,fuelType:string,doors:number,imgSrc:string){
+    super(producer,weight,speed,year,kilometersLeft,numberOfSeats,fuelType,imgSrc);
     this.doors = doors;
   }
   render():string{
-    let writeOut:string = "<div class=\"row\">";
-      writeOut += "<div class=\"col-12\">";
+    let writeOut:string = "<div class=\"row truckStyle\">";
+    writeOut += "<div class=\"col-lg-6\">";
+    writeOut +="<img class='img-responsive' src=\""+  super.getImgSrc() +"\">";
+    writeOut += "</div>";
+      writeOut += "<div class=\"col-lg-6\">";
+        writeOut += '<h1>' + super.getProducer() + '</h1>';
         writeOut += '<ul>';
         writeOut += super.render();
         writeOut += '<li>' + 'Doors ' + this.doors + '</li>';
