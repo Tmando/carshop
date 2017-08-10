@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <script src='vehicle.js'></script>
+    <script>
+      vehiclesArray =new Array();
+      firstVehicle = new Car('Audi',300,120,2006,3000,5,'diesel',5);
+      secoundVehicle = new Motorbike('KTM',150,80,2003,5000,2,'diesel');
+      thirdVehicle = new Bus('Merceds',1500,100,1998,4000,50,'petrol',2);
+      fourthVehicle= new Truck('MAN',3000,130,2016,200000,3,'petrol',2);
+      newCar = new Car('BMW',300,120,2006,3000,5,'diesel',5);
+      vehiclesArray.push(firstVehicle);
+      vehiclesArray.push(secoundVehicle);
+      vehiclesArray.push(thirdVehicle);
+      vehiclesArray.push(fourthVehicle);
+      vehiclesArray.push(newCar);
+      seller = new Seller(vehiclesArray);
+      seller.showArray();
+      vehiclesArray2 =new Array();
+      firstVehicle2 = new Car('VW',300,120,2006,3000,5,'diesel',5);
+      vehiclesArray2.push(firstVehicle2);
+      seller2 =new Seller(vehiclesArray2);
+      seller2.showArray();
+      //seller.renderOnPage();
+    </script>
+    <div class='container' id='vehicleList'>
+
+    </div>
+
+  </body>
+</html>
